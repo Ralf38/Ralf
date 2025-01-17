@@ -2,7 +2,7 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: '0 9 * * *' # Tous les jours à 9h
+    - cron: '0 1,9,15,21 * * *' # Tous les jours à 9h
 
 jobs:
   commit:
