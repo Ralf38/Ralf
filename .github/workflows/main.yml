@@ -1,0 +1,22 @@
+name: Daily Commit
+
+on:
+  schedule:
+    - cron: '0 9 * * *' # Tous les jours à 9h
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Create or update log file
+        run: |
+          echo "$(date): Automated activity log" >> activity_log.txt
+          git config --global user.name "Your Name"
+          git config --global user.email "your-email@example.com"
+          git add activity_log.txt
+          git commit -m "Automated commit on $(date)"
+      - name: Push changes
+        run: |
+          git push
